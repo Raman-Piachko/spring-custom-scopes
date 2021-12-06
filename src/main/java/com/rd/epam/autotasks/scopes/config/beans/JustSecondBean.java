@@ -2,12 +2,11 @@ package com.rd.epam.autotasks.scopes.config.beans;
 
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
 import java.util.Objects;
+
 @Component
 public class JustSecondBean {
     private int id;
-    private Timestamp timestamp;
 
     public JustSecondBean(int id) {
         this.id = id;
@@ -37,8 +36,6 @@ public class JustSecondBean {
     @Override
     public String toString() {
         return "JustSecondBean{" +
-                "id=" + id +
-                ", timestamp=" + timestamp +
-                '}';
+                "id=" + id + '}';
     }
 }
