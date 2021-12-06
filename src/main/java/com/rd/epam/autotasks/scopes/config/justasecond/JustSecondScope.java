@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JustSecondScope implements Scope {
-
+    private static final long BORDER_LIFE = 1000;
     private final Map<String, Long> beanTimes = Collections.synchronizedMap(new HashMap<>());
     private final Map<String, Object> scopedObjects = Collections.synchronizedMap(new HashMap<>());
     private final Map<String, Runnable> destructionCallbacks = Collections.synchronizedMap(new HashMap<>());
@@ -25,9 +25,9 @@ public class JustSecondScope implements Scope {
     }
 
     private boolean isActual(String bean) {
-        long borderLife = 1000;
+
         long currentTime = System.currentTimeMillis();
-        return currentTime - beanTimes.get(bean) < borderLife;
+        return currentTime - beanTimes.get(bean) < BORDER_LIFE;
     }
 
     private void createObj(String bean, ObjectFactory<?> objectFactory) {
